@@ -1,7 +1,3 @@
-// 
-// Decompiled by Procyon v0.5.36
-// 
-
 package wblut.geom;
 
 import java.util.ArrayList;
@@ -9,6 +5,7 @@ import java.util.ArrayList;
 import wblut.external.poly2Tri.Triangulation;
 
 public class WB_Poly2Tri {
+	
 	public static int[] triangulatePolygon(final WB_Polygon poly) {
 		final int noc = poly.getNumberOfContours();
 		final int[] nopc = poly.getNumberOfPointsPerContour();

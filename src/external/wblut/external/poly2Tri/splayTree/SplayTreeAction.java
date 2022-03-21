@@ -4,7 +4,6 @@
 
 package wblut.external.poly2Tri.splayTree;
 
-public interface SplayTreeAction
-{
-    void action(final BTreeNode p0, final double p1);
+public interface SplayTreeAction {
+	void action(final BTreeNode p0, final double p1);
 }

@@ -4,9 +4,8 @@
 
 package wblut.external.poly2Tri.splayTree;
 
-public interface SplayTreeItem
-{
-    Comparable keyValue();
-    
-    void increaseKeyValue(final double p0);
+public interface SplayTreeItem {
+	Comparable keyValue();
+
+	void increaseKeyValue(final double p0);
 }
