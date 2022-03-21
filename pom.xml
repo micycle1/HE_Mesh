@@ -98,17 +98,12 @@
 		<repository>
 			<id>jzy3d-snapshots</id>
 			<name>Jzy3d Snapshots</name>
-			<url>http://maven.jzy3d.org/snapshots</url>
+			<url>https://maven.jzy3d.org/snapshots</url>
 		</repository>
 		<repository>
 			<id>jzy3d-releases</id>
 			<name>Jzy3d Snapshots</name>
-			<url>http://maven.jzy3d.org/releases</url>
-		</repository>
-		<repository>
-			<id>TU-Darmstadt</id>
-			<name>TU-Darmstadt</name>
-			<url>http://zoidberg.ukp.informatik.tu-darmstadt.de/artifactory/public-releases/</url>
+			<url>https://maven.jzy3d.org/releases</url>
 		</repository>
 	</repositories>
 
@@ -165,8 +160,8 @@
 			<version>5.5.1</version>
 		</dependency>
 		<dependency>
-			<groupId>gnu.trove</groupId>
-			<artifactId>trove</artifactId>
+			<groupId>net.sf.trove4j</groupId>
+			<artifactId>trove4j</artifactId>
 			<version>3.0.3</version>
 		</dependency>
 		<dependency>
