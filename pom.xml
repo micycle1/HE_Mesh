@@ -6,6 +6,12 @@
 	<artifactId>HE_Mesh</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>HE_Mesh</name>
+
+	<properties>
+		<sonar.organization>micycle</sonar.organization>
+		<sonar.host.url>https://sonarcloud.io</sonar.host.url>
+	</properties>
+
 	<build>
 		<sourceDirectory>src/</sourceDirectory>
 		<plugins>
