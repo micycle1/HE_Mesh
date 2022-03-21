@@ -25,7 +25,7 @@ import wblut.geom.WB_Point;
  * A cutoff factor can be specified to limit the movement of the vertices. If a
  * vertex would move more than cutoff*distance, it is displaced along the vertex
  * normal instead. If not specified, the cutoff factor defaults to 4.0,
- * corresponding to the displacement expected in an acute angle of 30°.
+ * corresponding to the displacement expected in an acute angle of 30.
  *
  */
 public class HEM_FacePlanarize extends HEM_Modifier {

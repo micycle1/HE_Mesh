@@ -12,16 +12,17 @@ package wblut.geom;
 import java.util.Collection;
 import java.util.List;
 
+import javax.vecmath.Point3d;
+
 import org.eclipse.collections.impl.list.mutable.FastList;
 
-import wblut.external.straightskeleton.Corner;
-import wblut.external.straightskeleton.Edge;
-import wblut.external.straightskeleton.Loop;
-import wblut.external.straightskeleton.LoopL;
-import wblut.external.straightskeleton.Machine;
-import wblut.external.straightskeleton.Output.Face;
-import wblut.external.straightskeleton.Point3d;
-import wblut.external.straightskeleton.Skeleton;
+import org.twak.camp.Corner;
+import org.twak.camp.Edge;
+import org.twak.camp.Machine;
+import org.twak.camp.Output.Face;
+import org.twak.camp.Skeleton;
+import org.twak.utils.collections.Loop;
+import org.twak.utils.collections.LoopL;
 
 /**
  * @author FVH
@@ -183,7 +184,7 @@ public class WB_PyramidFactory {
 			out.add(poly);
 			final Skeleton skel = new Skeleton(out, height);
 			skel.skeleton();
-			final LoopL<Corner> top = skel.flatTop;
+			final LoopL<Corner> top = skel.capCopy(height);
 			final Collection<Face> expfaces = skel.output.faces.values();
 			int counter = 0;
 			final List<int[]> tmpfaces = new FastList<int[]>();
@@ -356,7 +357,7 @@ public class WB_PyramidFactory {
 			out.add(poly);
 			final Skeleton skel = new Skeleton(out, maxoffset);
 			skel.skeleton();
-			final LoopL<Corner> top = skel.flatTop;
+			final LoopL<Corner> top = skel.capCopy(height);
 			final Collection<Face> expfaces = skel.output.faces.values();
 			int counter = 0;
 			final List<int[]> tmpfaces = new FastList<int[]>();

@@ -13,12 +13,12 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-import wblut.external.ProGAL.CEdge;
-import wblut.external.ProGAL.CTetrahedron;
-import wblut.external.ProGAL.CTriangle;
-import wblut.external.ProGAL.CVertex;
-import wblut.external.ProGAL.DelaunayComplex;
-import wblut.external.ProGAL.Point;
+import ProGAL.geom3d.Point;
+import ProGAL.geom3d.complex.CEdge;
+import ProGAL.geom3d.complex.CTetrahedron;
+import ProGAL.geom3d.complex.CTriangle;
+import ProGAL.geom3d.complex.CVertex;
+import ProGAL.geom3d.complex.delaunayComplex.DelaunayComplex;
 
 /**
  *

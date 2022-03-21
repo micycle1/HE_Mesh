@@ -12,6 +12,8 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
+import javax.vecmath.Point3d;
+
 import org.eclipse.collections.impl.list.mutable.FastList;
 import org.eclipse.collections.impl.map.mutable.primitive.IntIntHashMap;
 
@@ -21,14 +23,14 @@ import wblut.data.WB_JohnsonPolyhedraData03;
 import wblut.data.WB_JohnsonPolyhedraData04;
 import wblut.data.WB_PolyhedraData;
 import wblut.external.QuickHull3D.WB_QuickHull3D;
-import wblut.external.straightskeleton.Corner;
-import wblut.external.straightskeleton.Edge;
-import wblut.external.straightskeleton.Loop;
-import wblut.external.straightskeleton.LoopL;
-import wblut.external.straightskeleton.Machine;
-import wblut.external.straightskeleton.Output.Face;
-import wblut.external.straightskeleton.Point3d;
-import wblut.external.straightskeleton.Skeleton;
+import org.twak.camp.Corner;
+import org.twak.camp.Edge;
+import org.twak.camp.Machine;
+import org.twak.camp.Output.Face;
+import org.twak.camp.Skeleton;
+import org.twak.utils.collections.Loop;
+import org.twak.utils.collections.LoopL;
+
 import wblut.math.WB_Epsilon;
 
 /**
@@ -3237,7 +3239,7 @@ public class WB_GeometryFactory extends WB_GeometryFactory2D {
 		out.add(poly);
 		final Skeleton skel = new Skeleton(out, height);
 		skel.skeleton();
-		final LoopL<Corner> top = skel.flatTop;
+		final LoopL<Corner> top = skel.capCopy(height);
 		final Collection<Face> expfaces = skel.output.faces.values();
 		int counter = 0;
 		final List<int[]> tmpfaces = new FastList<int[]>();
@@ -3325,7 +3327,7 @@ public class WB_GeometryFactory extends WB_GeometryFactory2D {
 		out.add(poly);
 		final Skeleton skel = new Skeleton(out, height);
 		skel.skeleton();
-		final LoopL<Corner> top = skel.flatTop;
+		final LoopL<Corner> top = skel.capCopy(height);
 		final Collection<Face> expfaces = skel.output.faces.values();
 		int counter = 0;
 		final List<int[]> tmpfaces = new FastList<int[]>();
@@ -3415,7 +3417,7 @@ public class WB_GeometryFactory extends WB_GeometryFactory2D {
 		out.add(poly);
 		final Skeleton skel = new Skeleton(out, height);
 		skel.skeleton();
-		final LoopL<Corner> top = skel.flatTop;
+		final LoopL<Corner> top = skel.capCopy(height);
 		final Collection<Face> expfaces = skel.output.faces.values();
 		int counter = 0;
 		final List<int[]> tmpfaces = new FastList<int[]>();
@@ -3504,7 +3506,7 @@ public class WB_GeometryFactory extends WB_GeometryFactory2D {
 		out.add(poly);
 		final Skeleton skel = new Skeleton(out, height);
 		skel.skeleton();
-		final LoopL<Corner> top = skel.flatTop;
+		final LoopL<Corner> top = skel.capCopy(height);
 		final Collection<Face> expfaces = skel.output.faces.values();
 		int counter = 0;
 		final List<int[]> tmpfaces = new FastList<int[]>();
@@ -3688,7 +3690,7 @@ public class WB_GeometryFactory extends WB_GeometryFactory2D {
 		out.add(poly);
 		final Skeleton skel = new Skeleton(out, height);
 		skel.skeleton();
-		final LoopL<Corner> top = skel.flatTop;
+		final LoopL<Corner> top = skel.capCopy(height);
 		final Collection<Face> expfaces = skel.output.faces.values();
 		int counter = 0;
 		final List<int[]> tmpfaces = new FastList<int[]>();
@@ -3795,7 +3797,7 @@ public class WB_GeometryFactory extends WB_GeometryFactory2D {
 		out.add(poly);
 		final Skeleton skel = new Skeleton(out, height);
 		skel.skeleton();
-		final LoopL<Corner> top = skel.flatTop;
+		final LoopL<Corner> top = skel.capCopy(height);
 		final Collection<Face> expfaces = skel.output.faces.values();
 		int counter = 0;
 		final List<int[]> tmpfaces = new FastList<int[]>();
@@ -3904,7 +3906,7 @@ public class WB_GeometryFactory extends WB_GeometryFactory2D {
 		out.add(poly);
 		final Skeleton skel = new Skeleton(out, height);
 		skel.skeleton();
-		final LoopL<Corner> top = skel.flatTop;
+		final LoopL<Corner> top = skel.capCopy(height);
 		final Collection<Face> expfaces = skel.output.faces.values();
 		int counter = 0;
 		final List<int[]> tmpfaces = new FastList<int[]>();
@@ -4012,7 +4014,7 @@ public class WB_GeometryFactory extends WB_GeometryFactory2D {
 		out.add(poly);
 		final Skeleton skel = new Skeleton(out, height);
 		skel.skeleton();
-		final LoopL<Corner> top = skel.flatTop;
+		final LoopL<Corner> top = skel.capCopy(height);
 		final Collection<Face> expfaces = skel.output.faces.values();
 		int counter = 0;
 		final List<int[]> tmpfaces = new FastList<int[]>();
@@ -4247,7 +4249,7 @@ public class WB_GeometryFactory extends WB_GeometryFactory2D {
 		out.add(poly);
 		final Skeleton skel = new Skeleton(out, cap);
 		skel.skeleton();
-		final LoopL<Corner> top = skel.flatTop;
+		final LoopL<Corner> top = skel.capCopy(height);
 		final Collection<Face> expfaces = skel.output.faces.values();
 		int counter = 0;
 		final List<int[]> tmpfaces = new FastList<int[]>();
@@ -4471,7 +4473,7 @@ public class WB_GeometryFactory extends WB_GeometryFactory2D {
 		out.add(poly);
 		final Skeleton skel = new Skeleton(out, cap);
 		skel.skeleton();
-		final LoopL<Corner> top = skel.flatTop;
+		final LoopL<Corner> top = skel.capCopy(height);
 		final Collection<Face> expfaces = skel.output.faces.values();
 		int counter = 0;
 		final List<int[]> tmpfaces = new FastList<int[]>();

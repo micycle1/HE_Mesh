@@ -13,11 +13,11 @@ import java.util.Set;
 import org.eclipse.collections.impl.list.mutable.FastList;
 import org.eclipse.collections.impl.set.mutable.primitive.IntHashSet;
 
-import wblut.external.ProGAL.CTetrahedron;
-import wblut.external.ProGAL.CTriangle;
-import wblut.external.ProGAL.CVertex;
-import wblut.external.ProGAL.DelaunayComplex;
-import wblut.external.ProGAL.Point;
+import ProGAL.geom3d.Point;
+import ProGAL.geom3d.complex.CTetrahedron;
+import ProGAL.geom3d.complex.CTriangle;
+import ProGAL.geom3d.complex.CVertex;
+import ProGAL.geom3d.complex.delaunayComplex.DelaunayComplex;
 import wblut.hemesh.HEC_Geodesic;
 import wblut.hemesh.HEMC_VoronoiCells;
 import wblut.hemesh.HE_Mesh;
@@ -245,7 +245,7 @@ class WB_VoronoiFactory3D extends WB_VoronoiFactory2D {
 			return getVoronoi3DBruteForce(points, nv, aabb, d);
 		}
 		final int n = points.size();
-		final List<wblut.external.ProGAL.Point> tmppoints = new ArrayList<wblut.external.ProGAL.Point>(
+		final List<Point> tmppoints = new ArrayList<Point>(
 				n);
 		final WB_KDTreeInteger3D<WB_Coord> tree = new WB_KDTreeInteger3D<WB_Coord>();
 		int i = 0;
@@ -253,7 +253,7 @@ class WB_VoronoiFactory3D extends WB_VoronoiFactory2D {
 		for (i = 0; i < points.size(); i++) {
 			p = points.get(i);
 			tmppoints.add(
-					new wblut.external.ProGAL.Point(p.xd(), p.yd(), p.zd()));
+					new Point(p.xd(), p.yd(), p.zd()));
 			tree.add(p, i);
 		}
 		final DelaunayComplex dc = new DelaunayComplex(tmppoints);
@@ -266,7 +266,7 @@ class WB_VoronoiFactory3D extends WB_VoronoiFactory2D {
 			final List<WB_Point> hullpoints = new ArrayList<WB_Point>();
 			for (final CTetrahedron tetra : vertexhull) {
 				// if (!tetra.containsBigPoint()) {
-				hullpoints.add(toPoint(tetra.circumcenter()));
+				hullpoints.add(toPoint(tetra.circumCenter()));
 				
 				// }
 			}
@@ -356,14 +356,14 @@ class WB_VoronoiFactory3D extends WB_VoronoiFactory2D {
 			return new int[][] { { 1, 2, 3 }, { 0, 2, 3 }, { 0, 1, 3 },
 					{ 0, 1, 2 } };
 		}
-		final List<wblut.external.ProGAL.Point> tmppoints = new ArrayList<wblut.external.ProGAL.Point>(
+		final List<Point> tmppoints = new ArrayList<Point>(
 				nv);
 		final WB_KDTreeInteger3D<WB_Coord> tree = new WB_KDTreeInteger3D<WB_Coord>();
 		WB_Coord p;
 		for (int i = 0; i < nv; i++) {
 			p = points.get(i);
 			tmppoints.add(
-					new wblut.external.ProGAL.Point(p.xd(), p.yd(), p.zd()));
+					new Point(p.xd(), p.yd(), p.zd()));
 			tree.add(p, i);
 		}
 		final DelaunayComplex dc = new DelaunayComplex(tmppoints);
@@ -397,14 +397,14 @@ class WB_VoronoiFactory3D extends WB_VoronoiFactory2D {
 			return new int[][] { { 0,1 }, { 0,2 }, { 0,3 },
 					{ 1, 2 },{ 1, 3 },{ 2, 3 } };
 		}
-		final List<wblut.external.ProGAL.Point> tmppoints = new ArrayList<wblut.external.ProGAL.Point>(
+		final List<Point> tmppoints = new ArrayList<Point>(
 				nv);
 		final WB_KDTreeInteger3D<WB_Coord> tree = new WB_KDTreeInteger3D<WB_Coord>();
 		WB_Coord p;
 		for (int i = 0; i < nv; i++) {
 			p = points.get(i);
 			tmppoints.add(
-					new wblut.external.ProGAL.Point(p.xd(), p.yd(), p.zd()));
+					new Point(p.xd(), p.yd(), p.zd()));
 			tree.add(p, i);
 		}
 		final DelaunayComplex dc = new DelaunayComplex(tmppoints);
@@ -465,7 +465,7 @@ class WB_VoronoiFactory3D extends WB_VoronoiFactory2D {
 	public static WB_Network getNetwork(final WB_CoordCollection points) {
 		
 		final int n = points.size();
-		final List<wblut.external.ProGAL.Point> tmppoints = new ArrayList<wblut.external.ProGAL.Point>(
+		final List<Point> tmppoints = new ArrayList<Point>(
 				n);
 		
 		int i = 0;
@@ -473,7 +473,7 @@ class WB_VoronoiFactory3D extends WB_VoronoiFactory2D {
 		for (i = 0; i < points.size(); i++) {
 			p = points.get(i);
 			tmppoints.add(
-					new wblut.external.ProGAL.Point(p.xd(), p.yd(), p.zd()));
+					new Point(p.xd(), p.yd(), p.zd()));
 		}
 		final DelaunayComplex dc = new DelaunayComplex(tmppoints);
 		final List<CTetrahedron> tetrahedra = dc.getTetrahedra();
@@ -483,7 +483,7 @@ class WB_VoronoiFactory3D extends WB_VoronoiFactory2D {
 		int index=0;
 		WB_Point vorPoint;
 		for(CTetrahedron tetra:tetrahedra) {
-			vorPoint=toPoint(tetra.circumcenter());
+			vorPoint=toPoint(tetra.circumCenter());
 			vorPoints.add(vorPoint);
 			tree.add(vorPoint,index++);
 		}
@@ -497,8 +497,8 @@ class WB_VoronoiFactory3D extends WB_VoronoiFactory2D {
 			if((tetra1==null)||(tetra1.containsBigPoint())) continue;
 			tetra2=triangle.getAdjacentTetrahedron(1);
 			if((tetra2==null)||(tetra2.containsBigPoint())) continue;
-			i1=tree.getNearestNeighbor(toPoint(tetra1.circumcenter())).value;
-			i2=tree.getNearestNeighbor(toPoint(tetra2.circumcenter())).value;
+			i1=tree.getNearestNeighbor(toPoint(tetra1.circumCenter())).value;
+			i2=tree.getNearestNeighbor(toPoint(tetra2.circumCenter())).value;
 			if(i1<i2) {
 				pairs.add(new int[] {i1,i2});
 				
@@ -812,7 +812,7 @@ class WB_VoronoiFactory3D extends WB_VoronoiFactory2D {
 	 * @param v
 	 * @return
 	 */
-	private static WB_Point toPoint(final wblut.external.ProGAL.Point v) {
+	private static WB_Point toPoint(final Point v) {
 		return geometryfactory.createPoint(v.x(), v.y(), v.z());
 	}
 

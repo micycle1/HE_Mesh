@@ -75,12 +75,12 @@ public class WB_SphericalHarmonics {
 		}
 
 		// start recursion: (0,0)->(M,M) up to PMM
-		// P(M+1,M+1)=-2M.P(M,M)-sqrt(1.0-x²)P(M,M), P(0,0)=1.0;
+		// P(M+1,M+1)=-2M.P(M,M)-sqrt(1.0-x')P(M,M), P(0,0)=1.0;
 		double PMM = 1.0;
 		if (M > 0) {
 			double somx2 = Math.sqrt((1.0 - x) * (1.0 + x));// robust way of
 															// calculating
-															// sqrt(1-x²)
+															// sqrt(1-x')
 			double fact = 1.0;
 			for (int i = 1; i <= M; i++) {
 				PMM *= -fact * somx2;
