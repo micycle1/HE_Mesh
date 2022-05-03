@@ -14,7 +14,7 @@ This fork hosts _HE_Mesh_ as a fully mavenised dependency, making it much easier
 
 * Where applicable, code that once wrapped other libraries now references the original libraries directly.
 (e.g. straight-skeleton functionality now references camp-skeleton (`org.twak.camp`) directly rather than the `wblut.external.straightskeleton` wrapper).
-* HE_Mesh code from `hemesh-external.jar` is now included in the source files (classes such as `WB_JTS`, `WB_QuickHull3D`, etc.).
+* HE_Mesh code once housed in `hemesh-external.jar` is now included in the source files (classes such as `WB_JTS`, `WB_QuickHull3D`, etc.).
 
 ### Artifact
 
